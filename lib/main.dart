@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'EjemploMenu.dart';  // Importas tu menú
+import 'EjemploMenu.dart';  // Importamos el menú
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      // 👇 Aquí usas tu widget myapp() de EjemploMenu.dart
-      home: Myapp(),  // Nota: es myapp() con minúscula
+      //  Aquí usamos el widget Myapp() de EjemploMenu.dart
+      home: Myapp(), 
     );
   }
 }
