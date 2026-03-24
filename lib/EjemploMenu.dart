@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(Myapp());
+void main() => runApp(MyApp1());
 
-class Myapp extends StatelessWidget {
+class MyApp1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('Bienvenido a la página el ElectroMSH.'),
+        child: Text('Bienvenido a ElectroMSH.'),
       ),
     );
   }
@@ -83,17 +83,92 @@ class ProductosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Productos')),
-      body: Center(child: Text('Lista de productos')),
+      body: ListView(
+  padding: EdgeInsets.all(10),
+  children: [
+    ListTile(
+      leading: Icon(Icons.electrical_services),
+      title: Text('Cargador rápido'),
+      subtitle: Text('Carga eficiente para todo tipo de dispositivos'),
+    ),
+    ListTile(
+      leading: Icon(Icons.headphones),
+      title: Text('Audífonos Bluetooth'),
+      subtitle: Text('Alta calidad de sonido y comodidad'),
+    ),
+    ListTile(
+      leading: Icon(Icons.speaker),
+      title: Text('Parlante portátil'),
+      subtitle: Text('Sonido potente y batería duradera'),
+    ),
+    ListTile(
+      leading: Icon(Icons.lightbulb),
+      title: Text('Bombillos LED'),
+      subtitle: Text('Ahorro de energía y larga duración'),
+    ),
+    ListTile(
+      leading: Icon(Icons.power),
+      title: Text('Multitoma'),
+      subtitle: Text('Protección contra sobrecargas'),
+    ),
+  ],
+),
     );
   }
 }
 
-class ContactoPage extends StatelessWidget {
+class ContactoPage extends StatefulWidget {
+  @override
+  _ContactoPageState createState() => _ContactoPageState();
+}
+
+class _ContactoPageState extends State<ContactoPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Contacto')),
-      body: Center(child: Text('Formulario de contacto')),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Nombre'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Ingrese su nombre';
+                  }
+                  return null;
+                },
+              ),
+
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Correo'),
+              ),
+
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Mensaje'),
+              ),
+
+              SizedBox(height: 20),
+
+              ElevatedButton(
+                child: Text('Enviar'),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Enviado')),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

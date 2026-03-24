@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       //  Aquí usamos el widget Myapp() de EjemploMenu.dart
-      home: Myapp(), 
+      home: MyApp1(), 
     );
   }
 }
